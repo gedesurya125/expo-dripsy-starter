@@ -115,6 +115,16 @@ const Navigator = () => {
           title: "Catalogue",
         }}
       />
+      <Drawer.Screen
+        name="profile"
+        options={{
+          drawerLabel: "Profile",
+          title: "profile",
+          drawerItemStyle: {
+            display: "none",
+          },
+        }}
+      />
     </Drawer>
   );
 };

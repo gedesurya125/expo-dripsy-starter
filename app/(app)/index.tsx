@@ -4,17 +4,16 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button } from "../../ui";
 import { Text, View } from "dripsy";
 import { useSession } from "components/ctx";
+import Ionicon from "@expo/vector-icons/Ionicons";
+import { StyledIcons } from "theme/components";
 
 export default function Page() {
-  const insets = useSafeAreaInsets();
   return (
     <View
       sx={{
         flex: 1,
         alignItems: "center",
         paddingHorizontal: 24,
-        paddingBottom: 24,
-        paddingTop: insets.top,
         backgroundColor: "$background",
       }}
     >
@@ -44,29 +43,49 @@ export default function Page() {
           This is the Home Page
         </Text>
         <Button
+          LeftIcon={() => {
+            return (
+              <StyledIcons
+                name="people"
+                size={24}
+                sx={{
+                  fontSize: 22,
+                  color: "white",
+                }}
+              />
+            );
+          }}
           sx={{
             mt: "$3",
           }}
         >
-          PrimaryButton
+          Existing Customer
         </Button>
         <Button
           variant="secondary"
+          LeftIcon={() => {
+            return (
+              <StyledIcons
+                name="person-add"
+                size={24}
+                sx={{
+                  fontSize: 20,
+                  color: "white",
+                }}
+              />
+            );
+          }}
           sx={{
             mt: "$3",
           }}
         >
-          SecondaryButton
-        </Button>
-        <Button
-          variant="destructive"
-          sx={{
-            mt: "$3",
-          }}
-        >
-          SecondaryButton
+          New Customer
         </Button>
       </View>
     </View>
   );
 }
+
+const first = (second) => {
+  third;
+};
