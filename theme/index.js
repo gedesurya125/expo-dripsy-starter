@@ -1,5 +1,7 @@
 import { makeTheme } from "dripsy";
 
+//? ==== primitive ====
+
 const space = {
   // recommended: set 0 first, then double for consistent nested spacing
   $0: 0,
@@ -21,6 +23,36 @@ const fontSizes = {
   $6: 32,
 };
 
+const linearGradients = {
+  sunny: ["red", "orange"],
+};
+
+const radii = {
+  $sm: 4,
+  $md: 8,
+  $lg: 12,
+};
+
+//? ==== Variants ====
+
+const buttons = {
+  primary: {
+    py: 12,
+    px: 16,
+    backgroundColor: "$primary",
+    alignItems: "center",
+    borderRadius: "$md",
+  },
+  secondary: {
+    variant: "buttons.primary",
+    backgroundColor: "$secondary",
+  },
+  destructive: {
+    variant: "buttons.primary",
+    backgroundColor: "$danger",
+  },
+};
+
 const text = {
   h1: {
     fontSize: "$2", // 16px, from `fontSizes` above
@@ -28,6 +60,21 @@ const text = {
   p: {
     fontSize: "$0", // 12px from `fontSizes`
     mb: "$3", // 16px from `space`
+  },
+  "button-primary": {
+    color: "#fff",
+    fontSize: "$2",
+    fontWeight: "bold",
+  },
+  "button-secondary": {
+    color: "#fff",
+    fontSize: "$2",
+    fontWeight: "bold",
+  },
+  "button-destructive": {
+    color: "#fff",
+    fontSize: "$2",
+    fontWeight: "bold",
   },
 };
 
@@ -52,15 +99,15 @@ const shadows = {
   },
 };
 
-const linearGradients = {
-  sunny: ["red", "orange"],
-};
-
+//? ===== THEMEs =====
 export const themeDark = makeTheme({
   colors: {
     $text: "#fff",
     $background: "#000",
-    $primary: "tomato",
+    $primary: "#ff6347",
+    $secondary: "#12355B",
+    $tertiary: "#420039",
+    $danger: "#FF0000",
   },
   space,
   fontSizes,
@@ -68,13 +115,18 @@ export const themeDark = makeTheme({
   textShadows,
   shadows,
   linearGradients,
+  radii,
+  buttons,
 });
 
 export const themeLight = makeTheme({
   colors: {
     $text: "#000",
     $background: "#fff",
-    $primary: "tomato",
+    $primary: "#ff6347",
+    $secondary: "#12355B",
+    $tertiary: "#420039",
+    $danger: "#FF0000",
   },
   space,
   fontSizes,
@@ -82,4 +134,6 @@ export const themeLight = makeTheme({
   textShadows,
   shadows,
   linearGradients,
+  radii,
+  buttons,
 });
