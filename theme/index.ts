@@ -99,6 +99,17 @@ const shadows = {
   },
 };
 
+const forms = {
+  input: {
+    borderWidth: 1,
+    borderColor: "$primary",
+    borderRadius: "$md",
+    color: "$text",
+    px: "$2",
+    py: "$2",
+  },
+};
+
 //? ===== THEMEs =====
 export const themeDark = makeTheme({
   colors: {
@@ -117,6 +128,7 @@ export const themeDark = makeTheme({
   linearGradients,
   radii,
   buttons,
+  forms,
 });
 
 export const themeLight = makeTheme({
@@ -136,4 +148,5 @@ export const themeLight = makeTheme({
   linearGradients,
   radii,
   buttons,
+  forms,
 });

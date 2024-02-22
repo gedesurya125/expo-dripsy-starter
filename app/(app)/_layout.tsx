@@ -1,23 +1,38 @@
+import React from "react";
 import { DripsyProvider, Text, useSx } from "dripsy";
-import { Slot, Stack, Tabs, useNavigation } from "expo-router"; // chose one
+import { Slot, Stack, Tabs, useNavigation, Redirect } from "expo-router"; // chose one
 import { Drawer } from "expo-router/drawer";
 import { useColorScheme } from "react-native";
 import { Pressable } from "dripsy";
-import { themeDark, themeLight } from "../theme";
+import { themeDark, themeLight } from "../../theme";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { Link } from "expo-router";
-import { Octicons } from "@expo/vector-icons";
-import { StyledIcons, StyledLink } from "../theme/components";
+import { StyledIcons, StyledLink } from "../../theme/components";
+
+import { useSession } from "components/ctx";
 
 export default function HomeLayout() {
-  const colorMode = useColorScheme();
+  const { session, isLoading } = useSession();
+
+  // You can keep the splash screen open, or render a loading screen like we do here.
+  if (isLoading) {
+    return <Text>Loading...</Text>;
+  }
+
+  // Only require authentication within the (app) group's layout as users
+  // need to be able to access the (auth) group and sign in again.
+  if (!session) {
+    // On web, static rendering will stop here as the user is not authenticated
+    // in the headless Node process that the pages are rendered in.
+    return <Redirect href="/sign-in" />;
+  }
+  // const colorMode = useColorScheme();
 
   return (
     <>
       <SafeAreaProvider>
-        <DripsyProvider theme={colorMode === "dark" ? themeDark : themeLight}>
-          <Navigator />
-        </DripsyProvider>
+        {/* <DripsyProvider theme={colorMode === "dark" ? themeDark : themeLight}> */}
+        <Navigator />
+        {/* </DripsyProvider> */}
       </SafeAreaProvider>
     </>
   );
@@ -50,7 +65,7 @@ const Navigator = () => {
         },
         headerRight: (props) => {
           return (
-            <StyledLink href={"/catalogue"} {...props} asChild>
+            <StyledLink href={"/profile"} {...props} asChild>
               <Pressable
                 sx={(theme) => ({
                   bg: "$primary",
