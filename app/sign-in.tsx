@@ -1,10 +1,11 @@
 import React from "react";
 import { router } from "expo-router";
-import { Pressable, Text, TextInput, View } from "dripsy";
+import { Pressable, View } from "dripsy";
 import type { SxProp } from "dripsy";
 
 import { useSession } from "components/ctx";
 import { Button } from "ui";
+import { InputField } from "components/forms/InputField";
 
 export default function SignIn() {
   const { signIn } = useSession();
@@ -17,8 +18,8 @@ export default function SignIn() {
       sx={{
         flex: 1,
         justifyContent: "center",
-        alignItems: "center",
         backgroundColor: "$background",
+        px: "$4",
       }}
     >
       <InputField
@@ -41,7 +42,7 @@ export default function SignIn() {
       <Button
         sx={{
           minWidth: 100,
-          mt: "$3",
+          mt: "$4",
         }}
         onPress={() => {
           signIn();
@@ -55,26 +56,3 @@ export default function SignIn() {
     </View>
   );
 }
-
-interface InputFieldProps extends React.ComponentProps<typeof TextInput> {
-  label?: string;
-}
-
-const InputField = ({ sx, label, ...props }: InputFieldProps) => {
-  return (
-    <View
-      sx={{
-        ...sx,
-      }}
-    >
-      <Text
-        sx={{
-          color: "$text",
-        }}
-      >
-        {label}
-      </Text>
-      <TextInput variant="input" sx={{ width: 200, mt: "$2" }} {...props} />
-    </View>
-  );
-};

@@ -6,8 +6,11 @@ import { Text, View } from "dripsy";
 import { useSession } from "components/ctx";
 import Ionicon from "@expo/vector-icons/Ionicons";
 import { StyledIcons } from "theme/components";
+import { useNavigation } from "expo-router";
 
-export default function Page() {
+export default function Page({}) {
+  const navigation = useNavigation();
+
   return (
     <View
       sx={{
@@ -43,6 +46,9 @@ export default function Page() {
           This is the Home Page
         </Text>
         <Button
+          onPress={() => {
+            navigation?.navigate("customer" as never);
+          }}
           LeftIcon={() => {
             return (
               <StyledIcons
@@ -62,6 +68,9 @@ export default function Page() {
           Existing Customer
         </Button>
         <Button
+          onPress={() => {
+            navigation.navigate("add-customer" as never);
+          }}
           variant="secondary"
           LeftIcon={() => {
             return (
@@ -85,7 +94,3 @@ export default function Page() {
     </View>
   );
 }
-
-const first = (second) => {
-  third;
-};

@@ -125,6 +125,14 @@ const Navigator = () => {
           },
         }}
       />
+      <Drawer.Screen
+        name="add-customer"
+        options={{
+          drawerLabel: "Add Customer",
+          title: "Add New Customer",
+          drawerItemStyle: {},
+        }}
+      />
     </Drawer>
   );
 };

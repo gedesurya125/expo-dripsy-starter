@@ -51,6 +51,10 @@ const buttons = {
     variant: "buttons.primary",
     backgroundColor: "$danger",
   },
+  iconButtonPrimary: {
+    variant: "buttons.primary",
+    p: 0,
+  },
 };
 
 const text = {
