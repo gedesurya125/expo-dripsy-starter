@@ -58,8 +58,8 @@ const linearGradients = {
 
 export const themeDark = makeTheme({
   colors: {
-    $text: "#000",
-    $background: "#fff",
+    $text: "#fff",
+    $background: "#000",
     $primary: "tomato",
   },
   space,
